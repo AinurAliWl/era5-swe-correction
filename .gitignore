@@ -1,0 +1,12 @@
+# Data files
+data_preprocessing/data/*.csv
+data_preprocessing/processed/*.csv
+catboost_info/
+
+# Jupyter
+.ipynb_checkpoints/
+__pycache__/
+
+# Models
+*.pt
+*.pth
