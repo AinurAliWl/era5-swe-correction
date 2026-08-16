@@ -249,35 +249,36 @@ All figures are saved in `figures/` directories inside each modeling module when
 ```
 era5-swe-correction/
 ├── data_preprocessing/
-│   ├── 0_gee_downloads.ipynb
-│   ├── 1_data_preprocessing.ipynb
-│   ├── data/
-│   └── processed/
+│ ├── 0_gee_downloads.ipynb                     # Google Earth Engine scripts for exporting ERA5-Land, MODIS, SRTM
+│ ├── 1_data_preprocessing.ipynb                # Data cleaning, merging, unit conversion, SWE calibration
+│ ├── data/                                     # Raw input files (not committed; see data_preprocessing/README.md)
+│ ├── processed/                                # Final preprocessed dataset (shemonaikha_snow_dataset_2014_2023.csv)
+│ └── README.md                                 # Description of raw data sources and download instructions
 │
 ├── modeling/
-│   ├── ml/
-│   │   ├── figures/
-│   │   ├── tables/
-│   │   ├── 2_loo_validation.ipynb
-│   │   └── 3_multistep_forecast.ipynb
-│   │
-│   ├── dl/
-│   │   ├── figures/
-│   │   ├── tables/
-│   │   ├── 4_lstm_gru_loo.ipynb
-│   │   └── 5_BiLSTM_Transformer_exploration.ipynb
-│   │
-│   └── pinn/
-│       ├── figures/
-│       ├── tables/
-│       ├── 6_pinn_loo_validation.ipynb
-│       ├── 7_pinn_seed_sensitivity.ipynb
-│       ├── 8_pinn_forecast_2022_2023.ipynb
-│       └── 9_pinn_loo_daily_simulation.ipynb
+│ ├── ml/
+│ │ ├── figures/                                 # Generated plots (scatter, boxplot, time series, SHAP)
+│ │ ├── tables/                                  # Metric tables and forecast CSV
+│ │ ├── 2_loo_validation.ipynb                   # ML bias correction with LOO validation + SHAP analysis
+│ │ └── 3_multistep_forecast.ipynb               # Multi-step forecasting (1–30 days) using ML models
+│ │
+│ ├── dl/
+│ │ ├── figures/                                  # Plots for LSTM/GRU/BiLSTM/Transformer
+│ │ ├── tables/                                   # Metrics and daily predictions
+│ │ ├── 4_lstm_gru_loo.ipynb                      # LSTM/GRU with LOO and multi-seed averaging
+│ │ └── 5_BiLSTM_Transformer_exploration.ipynb    # Supplementary BiLSTM & Transformer experiments
+│ │
+│ └── pinn/
+│ ├── figures/                                    # PINN dashboards, bootstrap CIs, sensitivity plots
+│ ├── tables/                                     # PINN metrics and continuous daily simulation
+│ ├── 6_pinn_loo_validation.ipynb                 # Main PINN LOO validation (5-seed averaging)
+│ ├── 7_pinn_seed_sensitivity.ipynb               # Seed sensitivity analysis (20 seeds)
+│ ├── 8_pinn_forecast_2022_2023.ipynb             # True out-of-sample temporal forecast
+│ └── 9_pinn_loo_daily_simulation.ipynb           # Continuous daily SWE reconstruction
 │
-├── .gitignore
-├── requirements.txt
-└── README.md
+├── .gitignore                                    # Ignore rules for raw data, training artifacts, etc.
+├── requirements.txt                              # Python dependencies
+└── README.md                                     # This file
 ```
 
 ---
